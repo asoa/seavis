@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/output.css">
+</head>
+<body>
+  <header>
+    <%- include('components/navbar') %>
+  </header>
+  <main>
+    <%- include('components/registration-form') %>
+  </main>
+  <footer>
+  </footer>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const password = document.getElementById('password');
+    const password2 = document.getElementById('password2');
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', (e) => {
+      if (password.value !== password2.value) {
+        e.preventDefault(); // Prevent form submission
+        password2.classList.add('ring-red-500', 'border-red-500'); // Add Tailwind classes for invalid input
+        alert('Passwords do not match!');
+      } else {
+        password2.classList.remove('ring-red-500', 'border-red-500'); // Remove Tailwind classes if corrected
+      }
+    });
+  });
+</script>
+</html>
